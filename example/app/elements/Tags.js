@@ -39,8 +39,6 @@ export default class extends React.Component {
                             {type: 'tags-custom1', prop: 'tags5', size: 2, options: '选项1,选项2,选项3,选项4'},
                             {type: 'br-form-row'}
                         ]
-                        
-                         
                     ]}
                 />
             </ScrollView>

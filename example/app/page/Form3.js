@@ -1,6 +1,5 @@
 import React from 'react'
-import { ScrollView,View, Animated ,Text as TX, findNodeHandle,
-    UIManager} from "react-native";
+import { ScrollView,View, Animated ,Text as TX, } from "react-native";
 import Freedomen from 'react-native-freedomen'    
 import {Text, Input, Rating,CheckBox,Tooltip,Slider, Button, Avatar, Badge, Icon, withBadge } from 'react-native-elements'
 

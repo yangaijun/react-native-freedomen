@@ -14,9 +14,7 @@ export default class extends React.Component {
             <ScrollView >  
                 <Freedomen.Region 
                     style={{padding: 2}}
-                    event={params => { 
-                       
-                    }} 
+                    event={params => {  }} 
                     columns={[   
                         [
                             {type: 'text-h1', value: '文本'},
@@ -67,7 +65,6 @@ export default class extends React.Component {
                             {type: 'text-custom3', value: '自定义3'},
                             {type: 'br-form-row'}
                         ] 
-                        
                     ]}
                 />
             </ScrollView>

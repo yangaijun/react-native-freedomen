@@ -10,13 +10,16 @@ export default  class  extends React.Component {
             data: {
                 items: [{
                     label:  'Form'
-                },{
-                    label:  'Form2'
-                },{
-                    label:  'Form3'
-                },{
-                    label:  'Form4'
-                }]
+                    },{
+                        label:  'Form2'
+                    },{
+                        label:  'Form3'
+                    },{
+                        label:  'Form4'
+                    } ,{
+                        label: 'Tree'
+                    }, { label: 'Page'}
+                ]
             }
         }
     }
