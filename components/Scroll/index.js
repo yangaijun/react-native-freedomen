@@ -34,6 +34,7 @@ class Scroll extends Component {
         let { columns, data } = this.state 
         
         let jsx = data.map((d, index) => {
+            d.$index = index
             return <Region columns={columns} data={d} key={index} event={(params) => {this._event(params, index)}} /> 
         }) 
 

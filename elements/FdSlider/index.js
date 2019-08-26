@@ -15,7 +15,6 @@ const styleItems = [
 class FdSlider extends Base {
 
 	constructor(props) {
-
         super(props)
         
         let item = props.item || {}

@@ -95,10 +95,10 @@ export default class extends Base {
                             key={key} 
                             style={[
                                 {
-                                    height: theme.size.smallHeight, 
+                                    height: theme.size.normalHeight, 
                                     marginRight: theme.size.itemSpace, 
                                     borderColor: theme.color.primaryColor, 
-                                    borderWidth: 1, 
+                                    borderWidth: .6, 
                                     borderRadius: 5
                                 }, 
                                 util.makeStyle(theme.external[this.props.item.type], ...styleItems),
@@ -117,7 +117,7 @@ export default class extends Base {
                             >
                             <Text style={[ 
                                 util.makeStyle(theme.external[this.props.item.type], 'color', 'fontSize'),
-                                this.state.value.indexOf(data.value) != -1 && {color: 'white'},
+                                this.state.value.indexOf(data.value) != -1 ? {color: 'white'} : {color: theme.color.primaryColor},
                                 this.state.value.indexOf(data.value) == -1 && util.makeStyle(this.style, 'color', 'fontSize')
                             ]}>
                                 {data.label}

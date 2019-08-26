@@ -12,9 +12,7 @@ class FdSwitch extends Base {
             prop: item.prop, 
             data: item.$data
         }
-
         this.style = this._style(item.style, this.state.value, this.state.data) 
-          
     } 
 
     componentWillReceiveProps(nextProps) {

@@ -1,31 +1,34 @@
 export default {
     'text': {
-        color: '#999',
+        color: '#878787',
         fontSize: 14
     },
 
     'text-h1': {
         color: 'black',
+        fontWeight: '800',
         fontSize: 22
     },
 
     'text-h2': {
-        color: '#191919',
+        color: '#111111',
+        fontWeight: '600',
         fontSize: 20
     },
 
     'text-h3': {
-        color: '#232323',
+        color: '#121212',
+        fontWeight: '400',
         fontSize: 18
     },
 
     'text-h4': {
-        color: '#323232',
+        color: '#191919',
         fontSize: 16
     },
 
     'text-h5': {
-        color: '#666',
+        color: '#232323',
         fontSize: 14
     },
 
@@ -41,8 +44,8 @@ export default {
         textAlign: 'center', 
         borderColor: 'white',
         borderWidth: .8,
-    },
-
+    }, 
+    
     'image-icon': {
         height: 22,
         width: 22

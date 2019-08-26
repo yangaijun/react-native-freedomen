@@ -62,11 +62,11 @@ class FdCounter extends Base {
             ]}>
                 <View style={[
                     {
-                        height: theme.size.normalHeight, 
-                        width: 115, 
+                        height: theme.size.largeHeight, 
+                        width: theme.size.largeHeight * 3.6, 
                         borderColor: theme.color.primaryColor, 
-                        borderWidth: .5, 
-                        borderRadius: 3, 
+                        borderWidth: .6, 
+                        borderRadius: 5, 
                         flexDirection: 'row'
                     }, 
                     theme.external[this.props.item.type], 
@@ -74,21 +74,18 @@ class FdCounter extends Base {
                 ]}>
                     <TouchableOpacity 
                         style={{
-                            width: theme.size.normalHeight, 
+                            width: theme.size.largeHeight, 
                             alignItems: 'center', 
                             justifyContent: 'center', 
-                            borderRightColor: theme.color.primaryColor, 
-                            backgroundColor: theme.color.primaryColor, 
-                            borderRightWidth: 1
+                            borderRightColor: theme.color.primaryColor,  
+                            borderRightWidth: .6
                         }} 
                         onPress={() => {this._submit('sub')}}
                     >
                         <Text style={{
                                 color: 'white', 
-                                fontSize: theme.size.primarySize,
-                                flex: 1, 
-                                textAlign: 'center',
-                                textAlignVertical: 'center'
+                                fontSize: 22,
+                                color: theme.color.primaryColor
                             }}> 
                             - 
                         </Text> 
@@ -113,19 +110,18 @@ class FdCounter extends Base {
                     
                     <TouchableOpacity 
                         style={{
-                                width: theme.size.normalHeight, 
+                                width: theme.size.largeHeight, 
                                 alignItems: 'center', 
                                 justifyContent: 'center',
-                                backgroundColor: theme.color.primaryColor, 
+                                borderLeftWidth: .6,
+                                borderLeftColor: theme.color.primaryColor, 
                             }} 
                             onPress={() => {this._submit('add')}}
                         >
                         <Text style={{
                                 color: 'white', 
-                                fontSize: theme.size.primarySize,
-                                flex: 1, 
-                                textAlign: 'center',
-                                textAlignVertical: 'center'
+                                fontSize: 22,
+                                color: theme.color.primaryColor, 
                             }}> 
                             + 
                         </Text> 

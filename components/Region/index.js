@@ -30,10 +30,11 @@ class Region extends Component {
     
     constructor(props) {
         super(props)  
-
+        //copy a new columns
+        this.columns = util.clone(props.columns)
         this.state = { 
             data: props.data || {},
-            columns: this._getColumns(props.columns, props.data),
+            columns: this._getColumns(this.columns, props.data),
             style: util.resetStyle(props.style) 
         } 
         this.inputs = []
@@ -50,11 +51,17 @@ class Region extends Component {
     } 
 
     _fresh(_this, newData) { 
-        
+        if (newData === void 0)
+            return
+
         _this.setState({
             data: newData,
-            columns: _this._getColumns(_this.state.columns, newData) 
+            columns: _this._getColumns(_this.columns, newData) 
         })
+        //if reudex, renew
+        if (_this.props.redux) {
+            Region.reduxMap[_this.props.redux].data = newData
+        }
 
         if (_this.inputs.length) { 
             for (let ref of _this.inputs) { 
@@ -77,7 +84,7 @@ class Region extends Component {
             data[i] = nextProps.data[i]
         } 
        
-        this.state.columns = nextProps.columns 
+        this.columns = nextProps.columns 
         this._fresh(this, data) 
     } 
 
@@ -154,7 +161,7 @@ class Region extends Component {
 
         if (Jsx) {
             return <Jsx 
-                key={el.prop || index}
+                key={index}
                 others={el.others}
                 event={params => {this._tagHasColumnsEvent(params, el)}}
                 style={el.style} 
@@ -174,7 +181,7 @@ class Region extends Component {
             this.inputs.push(el.prop)
         }
         Jsx = <Jsx 
-            key={el.prop || index} 
+            key={index} 
             event={this._event} 
             ref={el.prop}
             change={this._change}
@@ -267,7 +274,7 @@ class Region extends Component {
             }
         }  
         
-        if (!util.startWith(columns[columns.length - 1].type, ...containers.keys()))  
+        if (columns.length && !util.startWith(columns[columns.length - 1].type, ...containers.keys()))  
             view.push(<View key={'_10000'} style={util.resetStyle(this.state.style)}>{ sub }</View>) 
 
         return view

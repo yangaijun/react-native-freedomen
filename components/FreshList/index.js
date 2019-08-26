@@ -42,7 +42,21 @@ class FreshList extends Component {
             }
         }
     }  
-
+    resetData = (data) => {
+        data.map((d, i) => {
+            d.key = i + ''
+        })  
+        this.setState({
+            data: data,
+            noMore: data.length < this.config.pageSize,
+            pageNo: this.config.pageNo
+        })
+        if (data.length)
+            this.refs.flatList.scrollToIndex({
+                index: 0,
+                viewPosition: 0
+            })
+    }
     componentWillReceiveProps(nextProps) {   
 
         if (this.first) {
@@ -124,6 +138,10 @@ class FreshList extends Component {
     }
 
     _footer = () =>{ 
+        if (this.props.footer) {
+            return this.props.footer(this.state.noMore)
+        }
+
         return (
             <View style={{alignItems: 'center', margin: 5}}> 
                 {
@@ -145,7 +163,7 @@ class FreshList extends Component {
     }
 
     render () {
-        const ts = Platform.OS === 'android' ? 0.5 : 0;
+        const ts = Platform.OS === 'android' ? 0.01 : 0;
         let { columns, data } = this.state
 
         return  (
@@ -156,6 +174,7 @@ class FreshList extends Component {
                 size="large" />
             :
                 <FlatList  
+                    ref={'flatList'}
                     showsVerticalScrollIndicator={false}
                     data={data}    
                     refreshControl = {
@@ -165,7 +184,7 @@ class FreshList extends Component {
                     onEndReachedThreshold={ts}
                     ListEmptyComponent={this.props.onEmpty ? this.props.onEmpty : null}
                     numColumns={this.numColumns || 1}
-                    columnWrapperStyle={this.props.style ? this.props.style : null}
+                    columnWrapperStyle={this.props.style && this.numColumns > 1 ? this.props.style : null}
                     renderItem={
                         ({item, key}) => <Region data = {item} key={key} columns={columns} event={this.props.event} />
                     }

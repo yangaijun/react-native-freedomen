@@ -6,7 +6,9 @@ import Base from '../Base'
 
 const styleItems = [ 
     'textAlign',
-    'textAlignVertical'
+    'textAlignVertical',
+    'alignItems',
+    'justifyContent'
 ]
 
 export default class FdInput extends Base { 
@@ -36,14 +38,13 @@ export default class FdInput extends Base {
 
     render () {  
         return (  
-            util.startWith('input-area', this.props.item.type)
+            util.startWith(this.props.item.type, 'input-area')
             ? 
             <View style={[theme.external[this.props.item.type] ,this.style]}>
                 <TextInput  
                     underlineColorAndroid="transparent"  
                     placeholder={this.state.placeholder} 
                     placeholderTextColor={this.style.placeholderTextColor || theme.color.placeholder}
-                    autoFocus={this.props.item.focus}
                     autoCorrect={false}  
                     multiline = {true}
                     editable={!this.disabled}
@@ -52,11 +53,11 @@ export default class FdInput extends Base {
                     underlineColorAndroid={'transparent'}
                     style={[
                         {textAlignVertical: 'top', padding: 0}, 
-                        util.makeStyle(theme.external[this.props.item.type], ...styleItems),  
+                        this._reSetStyleItem(util.makeStyle(theme.external[this.props.item.type], ...styleItems)),  
                         util.makeStyle(this.style, ...styleItems)
                     ]} 
                     {...this.props.item.others}
-                    value={this.state.value}  
+                    value={typeof this.state.value === 'number' ? this.state.value + '' : this.state.value}  
                     onChangeText={this._change}/>
                     {
                         this.props.item.maxLength ? 
@@ -75,7 +76,6 @@ export default class FdInput extends Base {
                     keyboardType={util.startWith('input-password', this.props.item.type)  ? 'default' : this.state.keyboardType || 'default'}   
                     placeholder={this.state.placeholder} 
                     placeholderTextColor={this.style.placeholderTextColor || theme.color.placeholder}
-                    autoFocus={this.props.item.focus}
                     autoCorrect={false} 
                     autoCapitalize={'none'}  
                     editable={!this.disabled}
@@ -85,10 +85,10 @@ export default class FdInput extends Base {
                     clearButtonMode={'while-editing'} 
                     style={[
                         {padding: 0}, 
-                        util.makeStyle(theme.external[this.props.item.type], ...styleItems),  
+                        this._reSetStyleItem(util.makeStyle(theme.external[this.props.item.type], ...styleItems)),  
                         util.makeStyle(this.style, ...styleItems)
                     ]} 
-                    value={this.state.value}  
+                    value={typeof this.state.value === 'number' ? this.state.value + '' : this.state.value}  
                     onChangeText={this._change}/>
             </View>
         )

@@ -12,9 +12,9 @@ const color = {
 const size = { 
     primarySize: 16,  
     itemSpace: 8.8,
-    largeHeight: 42, 
-    normalHeight: 35,
-    smallHeight: 30
+    largeHeight: 38, 
+    normalHeight: 30,
+    smallHeight: 22
 } 
 
 const external = {
@@ -38,6 +38,7 @@ function custom(obj1 = {}, obj2 = {}, obj3 = {}) {
         color: 'white',
         fontSize: size.primarySize,
         textAlignVertical:'center',
+        fontWeight: '500',
         backgroundColor: color.primaryColor, 
       
     }
@@ -49,6 +50,7 @@ function custom(obj1 = {}, obj2 = {}, obj3 = {}) {
         textAlignVertical:'center',
         color: color.primaryColor,
         fontSize: size.primarySize,
+        fontWeight: '500',
         borderWidth: 1, 
     }
 
@@ -58,6 +60,7 @@ function custom(obj1 = {}, obj2 = {}, obj3 = {}) {
         textAlign: 'center',
         color: color.placeholder,
         fontSize: size.primarySize,
+        fontWeight: '500',
         backgroundColor: color.disableColor, 
     }
 
@@ -65,6 +68,7 @@ function custom(obj1 = {}, obj2 = {}, obj3 = {}) {
         textAlignVertical:'center',
         borderColor: color.disableColor,
         padding: 12,
+        fontWeight: '500',
         textAlign: 'center',
         color: color.disableColor,
         fontSize: size.primarySize,

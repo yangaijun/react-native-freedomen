@@ -57,6 +57,7 @@ export default class extends Base {
                     </Text>
                 </TouchableOpacity>
                 <DatePicker
+                    androidMode="spinner"
                     ref={ref => this.date = ref}
                     style={{width: 0, height: 0}}
                     date={this.state.date}

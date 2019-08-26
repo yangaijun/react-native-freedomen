@@ -15,6 +15,7 @@ class FdSelect extends Base {
 
         this.options = this._options(item.options)
         this.style = this._style(item.style, this.state.value, this.state.data) 
+        this.disabled = this._disabled(item.disabled, this.state.value, this.state.data)
     }  
 
     componentWillReceiveProps(nextProps) { 
@@ -23,18 +24,25 @@ class FdSelect extends Base {
         })
     } 
  
-    _optionItem = (options) =>{
-        return options.map((option, i) => {
-            return <Picker.Item key={i} label={option.label} value={option.value}  />
+    _optionItem = (options) => {
+         
+        let items = options.map((option, i) => {
+            return <Picker.Item key={i} label={option.label} value={option.value} />
         })
+
+        if (this.props.item.placeholder && !this.state.value) 
+            items = [<Picker.Item key={-1} label={this.props.item.placeholder} value={-1} color={theme.color.placeholder}/>, ...items]
+
+        return items
     }
 
     render () { 
         return (
             <Picker
                 selectedValue={this.state.value} 
+                enabled={!this.disabled}
                 {...this.props.item.others}
-                style={[theme.external[this.props.item.type], this.style]}
+                style={[{marginLeft: -5}, theme.external[this.props.item.type], this.style]}
                 onValueChange={this._change}>
                     {
                         this._optionItem(this.options)

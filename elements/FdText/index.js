@@ -13,6 +13,7 @@ class FdText extends Base {
             prop: item.prop,
             value: item.value,
             data: item.$data, 
+            placeholder: item.placeholder
         }    
 
         this.style = this._style(item.style, this.state.value, this.state.data)    
@@ -26,13 +27,15 @@ class FdText extends Base {
     }  
 
     render () {    
+        let _text = this.filter || this.state.value
+ 
         return (
             <Text 
                 {...this.props.item.other}
-                style={[util.resetStyle(theme.external[this.props.item.type]) , this.style]} 
+                style={[util.resetStyle(theme.external[this.props.item.type]) , this.style, !_text && {color: theme.color.placeholder}]} 
             >  
                 {
-                    this.filter || this.state.value
+                    this.filter || this.state.value || this.state.placeholder
                 }
             </Text>
         )

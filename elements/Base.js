@@ -69,12 +69,16 @@ export default class Base extends React.Component {
         if (!filter)
             return null 
 
+        if (typeof filter === 'string') {
+            return util.formatDate.format(new Date(value), filter)
+        }
+
         if (util.isPlainObject(filter)) {
             return filter[value]
         } 
 
         let obj
-        if (typeof filter == 'function') {
+        if (typeof filter === 'function') {
             obj = filter(value, data) 
         }
         if (util.isPlainObject(obj)) 
@@ -95,15 +99,17 @@ export default class Base extends React.Component {
         }
 
         if (this.props.item && this.props.item.type && util.startWith(this.props.item.type, 'text', 'input', 'button')) {
-            if(tempStyle.alignItems)
-                tempStyle.textAlign = {'flex-end': 'right', 'flex-start': 'left'}[tempStyle.alignItems] || tempStyle.alignItems
-            if (tempStyle.justifyContent)
-                tempStyle.textAlignVertical = {'flex-end': 'right', 'flex-start': 'left'}[tempStyle.justifyContent] || tempStyle.justifyContent
+            this._reSetStyleItem(tempStyle)
         }
-        
         return tempStyle
     }
-
+    _reSetStyleItem(tempStyle) {
+        if(tempStyle.alignItems)
+            tempStyle.textAlign = {'flex-end': 'right', 'flex-start': 'left'}[tempStyle.alignItems] || tempStyle.alignItems
+        if (tempStyle.justifyContent)
+            tempStyle.textAlignVertical = {'flex-end': 'right', 'flex-start': 'left'}[tempStyle.justifyContent] || tempStyle.justifyContent
+        return tempStyle
+    }
     _options = (options) => {
         return util.correctOption(options)
     }

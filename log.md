@@ -1,3 +1,20 @@
+## 0.3.0更新内容
+
+* 样式整改
+* region columns  拷贝
+* select, text 加入placeholer
+* pick 日期 改spinner
+* select 加入disabled属性
+* views, scroll  数据加入下标$index
+
+
+
+## 0.2.7更新内容
+
+* checkbox, radio, input, counter, pick-* 加入disabled属性
+* 容器类提出
+* 重构部分元素
+
 ## 0.2.6 更新内容
 
 * 元素 pickdate, pickdatetime, picktime 改为 pick-date, pick-datetime, pick-time
@@ -15,6 +32,4 @@
 * columns 支持 function  columns: [(data) => {return {type: 'text', value: 123}}]
 * scroll,views return 跟新到item
 * scroll, views 事件返回值添加坐標 index 屬性
-
-## 
 

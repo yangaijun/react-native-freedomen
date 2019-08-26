@@ -4,18 +4,7 @@ import util from '../../utils/util'
 import theme from '../../config/theme'
 import Radio from '../FdRadio/index'
 import Base from '../Base'
-const styleItems = [
-    'margin',
-    'marginLeft',
-    'marginRight',
-    'marginBottom',
-    'marginTop',
-    'padding',
-    'paddingLeft',
-    'paddingRight', 
-    'paddingTop', 
-    'paddingBottom', 
-]
+
 export default class extends Base { 
 
     constructor (props) {

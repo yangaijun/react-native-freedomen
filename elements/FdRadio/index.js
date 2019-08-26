@@ -68,7 +68,7 @@ export default class extends Base {
         _style.width = newHeight
         _style.height = newHeight
         _style.borderRadius = newHeight
-        _style.padding = parseInt(newHeight * 0.14) 
+        _style.padding = parseInt(newHeight * 0.13) 
         return _style
     }
     render () { 
@@ -82,12 +82,12 @@ export default class extends Base {
                 ]}>
                 <Animated.View style={[
                         {
-                            borderWidth: 2, 
+                            borderWidth: 1.5, 
                             borderColor: theme.color.primaryColor,
                             borderRadius: theme.size.smallHeight,
                             height: theme.size.smallHeight, 
                             width: theme.size.smallHeight, 
-                            padding: parseInt(theme.size.smallHeight * 0.14) 
+                            padding: parseInt(theme.size.smallHeight * 0.13) 
                         }, 
                         theme.external[this.props.item.type], 
                         this._getStyle(this.style),
